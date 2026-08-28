@@ -27,9 +27,21 @@ a|
 * Our REST API conventions vs. 
 link:https://en.wikipedia.org/wiki/Richardson_Maturity_Model[Richardson Maturity Model]
 a|
-
+* While using a linter is not a requirement, having clean code is.
+* Can work with Git in the terminal.
+* Understand and work with data types in JavaScript.
+* Can explain what Node.js is and how to run files with it.
+* Knows the existing data types in JavaScript and can work with them.
+* Understands type coercion and strategies to avoid it.
+* Can design a REST API.
+* Knows the three REST conventions we follow:
+1. Using the right HTTP verb.
+2. Ordering. 
+3. Naming (noun, plural) that maps to collections in your system.
 a|
+link:00._Course_Material/01._Assignments/01._Introduction/Introduction_Exercises.md[Introduction Exercises]
 
+link:00._Course_Material/01._Assignments/01._Introduction/REST_API_Design.md[REST API Design]
 
 
 |===
