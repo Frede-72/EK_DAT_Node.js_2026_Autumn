@@ -10,13 +10,24 @@ const lastName = "Latif";
 // show in the console
 // My first name is Anders and my last name is Latif
 
-
+console.log(`My first name is ${firstName} and my last name is ${lastName}`);
 
 // --------------------------------------
 // Exercise 2 - Numbers and Strings
 
 const year = "2025";
 const increment = 1;
+
+const newYearVersionOne = parseInt(year) + increment;
+
+const newYearVersionTwo = Number(year) + increment;
+
+const newYearVersionThree = + year + increment;
+
+console.log(newYearVersionThree);
+
+console.log(parseInt("234324abc2"));
+console.log(Number("234324abc2"));
 
 // Add the year plus the increment
 // The result should be 2026
