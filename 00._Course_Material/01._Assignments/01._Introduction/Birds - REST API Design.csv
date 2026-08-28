@@ -1,0 +1,7 @@
+HTTP Method,Endpoint,Description
+GET,/birds,Retrieves all birds
+GET,/birds/{id},Retrieves a bird by id
+POST,/birds,Creates a bird resource
+PUT,/birds/{id},Replaces an entire bird resource
+PATCH,/birds/{id},Replaces parts of the bird resource
+DELETE,/birds/{id},Deletes a bird resource
