@@ -22,7 +22,7 @@ Here are some useful tips regarding [debugging](/00._Course_Material/00._Meta_Co
 
 ### Homework
 
-- Exercises that you must hand-in. We will try to use Github Classrooms this semester. Let me know if anyone of you prefer to submit through Teams.
+- Exercises that you must hand-in. Let me know if anyone of you prefer to submit through Teams.
 
 ### Mandatories
 
