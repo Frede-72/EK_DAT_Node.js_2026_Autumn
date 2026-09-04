@@ -28,14 +28,25 @@ const watchingMoviesAction = (name) => {
 };
 
 console.log(genericActionPerformer("Elias", playingGuitarAction));
-console.log(genericActionPerformer("Magnus", watchingMoviesAction));
 
 //Elias, playing guitar
-/* assignment
-using genericActionPerformer, make it say Elias likes to play guitar
+/* Assignment
+    using genericActionPerformer, make it say Elias likes to play guitar
 */
+
+console.log(genericActionPerformer("Magnus", watchingMoviesAction));
 
 //Magnus, watch movies
 /*
     Create arrow function called watchingMoviesAction
 */
+
+//callback function
+
+// Jacop, Sail
+/* Assignment 
+    Do same as above as a oneliner
+*/
+
+console.log(genericActionPerformer("jacop", (name)=> `${name} likes Sailing`));
+
