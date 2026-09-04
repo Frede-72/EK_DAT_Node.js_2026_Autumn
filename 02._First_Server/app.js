@@ -29,9 +29,10 @@ app.get('/beers/:beerType/:amount', (req, res) => {
     res.send({ data: `You ordered ${req.params.amount} of ${req.params.beerType}` });
 });
 
-// /bars/forgottenItems
+// /bars/forgottenItems?wallet=200&keys=my house&my_baby=Sam
 app.get('/bars/forgottenItems', (req, res) => {
-    res.send();
+    console.log(req.query);
+    res.send({ data: req.query });
 });
 
 

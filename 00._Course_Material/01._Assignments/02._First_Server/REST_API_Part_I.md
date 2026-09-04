@@ -1,12 +1,12 @@
 # Rest API - Part I
 
-1. Design the `Birds` API.
+1. Design the `Animals` API.
 
 
 2. Create a new Express project from scratch. 
 
 
-3. Start implementing the REST API that does the **R** in CRUD over `Birds`. 
+3. Start implementing the REST API that does the **R** in CRUD over `Animals`. 
 
 For this week you only need to implement the **GET** requests.
 
