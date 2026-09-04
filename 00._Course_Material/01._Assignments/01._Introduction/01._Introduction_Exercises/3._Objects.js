@@ -20,6 +20,8 @@ const me = { name: "Frederik", age: 24 };
 // Exercise 3 - Add a key-value pair
 
 const stackOverflow = {};
+stackOverflow.isAllowed = true;
+console.log(stackOverflow.isAllowed);
 
 // make a rule called isAllowed and let the value be true
 
