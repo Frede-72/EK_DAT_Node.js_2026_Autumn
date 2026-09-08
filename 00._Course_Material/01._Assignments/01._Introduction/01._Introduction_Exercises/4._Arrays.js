@@ -34,7 +34,7 @@ console.log(significantMathNumbers.indexOf(1729));
 const diet = ["tomato", "cucumber", "rocket"];
 
 // You are a programmer. In one line (one statement) insert hamburger, soda and pizza between the elements cucumber and rocket
-
+diet.
 console.log(diet);
 
 // --------------------------------------
