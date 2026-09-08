@@ -1,0 +1,7 @@
+HTTP method |   Endpoint    | Description
+    GET     |/animals     | Get all animals
+    GET     |/animals/{id}| Get one animals by id
+    POST    |/animals     | Create a new animals ressource
+    PUT     |/animals/{id}| Replace existing animals with another ressource
+    PATCH   |/animals/{id}| Replace parts of existing animals resource
+    DELETE  |/animals/{id}| Delete animals resource
