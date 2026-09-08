@@ -1,0 +1,7 @@
+HTTP method |   Endpoint    | Description
+    GET     |/languages     | Get all languages
+    GET     |/languages/{id}| Get one language by id
+    POST    |/languages     | Create a new language ressource
+    PUT     |/languages/{id}| Replace existing language with another ressource
+    PATCH   |/languages/{id}| Replace parts of existing language resource
+    DELETE  |/languages/{id}| Delete language resource
