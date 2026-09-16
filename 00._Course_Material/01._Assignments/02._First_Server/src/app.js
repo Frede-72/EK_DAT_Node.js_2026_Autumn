@@ -57,6 +57,18 @@ app.post('/animals' , (req, res) => {
 
 })
 
+app.put('/animals/:id' , (req, res) => {
+
+})
+
+app.patch('/animals/:id' , (req, res) => {
+    
+})
+
+app.delete('/animals/:id' , (req, res) => {
+    
+})
+
 // 2xx OK
 // 3xx Redirect
 // 4xx Client-side error
