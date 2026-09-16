@@ -92,11 +92,41 @@ app.put('/animals/:id' , (req, res) => {
         res.status(400).send({ data: `Animal by name ${foundAnimal.name} already exist` });
     }
 
-    console.log("put")
 });
 
 app.patch('/animals/:id' , (req, res) => {
-    console.log("patch")
+        const animalId = Number(req.params.id);
+    if(!animalId){
+        res.status(400).send({ data: `No valid id provided` });
+        return;
+    }
+    
+    const index = animals.map(animal => animal.id).indexOf(animalId);
+    if( index === -1 ){
+        res.status(404).send({ data: `No animal found for id: ${animalId}` });
+        return;
+    }
+    
+    const name = req.body.name;
+    if(!name){
+        res.status(400).send({ data: `No name provided` });
+        return;
+    }
+
+    name.trim;
+    if(!name){
+        res.status(400).send({ data: `No name provided` });
+        return;
+    }
+
+    const foundAnimal = animals.find( (animal) => animal.name === `${name}` );
+
+    if(foundAnimal === undefined) {
+        animals[index].name = name;
+        res.send({ data: `${req.body}` });
+    } else if( foundAnimal.name !== undefined ){
+        res.status(400).send({ data: `Animal by name ${foundAnimal.name} already exist` });
+    }
 
 });
 
