@@ -34,7 +34,13 @@ app.get('/animals/:id', (req, res) => {
 app.post('/animals' , (req, res) => {
     const name = req.body.name;
 
-    if(name === undefined){
+    if(!name){
+        res.status(400).send({ data: `No name provided` });
+        return;
+    }
+
+    name.trim;
+    if(!name){
         res.status(400).send({ data: `No name provided` });
         return;
     }
