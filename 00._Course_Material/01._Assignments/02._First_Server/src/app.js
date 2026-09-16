@@ -16,7 +16,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/animals', (req, res) => {
-    
     res.send({ data: animals });
 });
 
@@ -33,10 +32,23 @@ app.get('/animals/:id', (req, res) => {
 });
 
 app.post('/animals' , (req, res) => {
-    const newAnimal = { name: req.body.name, id: animals[animals.length - 1].id + 1 }
-    console.log(newAnimal);
-    animals.push(newAnimal);
-    res.send({ data: `${req.body}` });
+    const name = req.body.name;
+
+    if(name === undefined){
+        res.status(400).send({ data: `No name provided` });
+        return;
+    }
+
+    const newAnimal = { name: name, id: animals[animals.length - 1].id + 1 };
+    const found = animals.find( (animal) => animal.name === `${name}` );
+
+    if(found === undefined) {
+        animals.push(newAnimal);
+        res.send({ data: `${req.body}` });
+    } else if( found.name !== undefined ){
+        res.status(400).send({ data: `Animal by name ${found.name} already exist` });
+    }
+
 })
 
 // 2xx OK
