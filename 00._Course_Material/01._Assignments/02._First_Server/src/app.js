@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+
 const duck = { name:"Duck", id: 1 };
 const bird = { name:"Bird", id: 2 };
 const other_Animal = { name:"Other animal", id: 3 };
@@ -29,6 +31,11 @@ app.get('/animals/:id', (req, res) => {
     }
 
 });
+
+app.post('/animals' , (req, res) => {
+    console.log(req.body);
+    res.send({ data: `${req.body}` });
+})
 
 // 2xx OK
 // 3xx Redirect
