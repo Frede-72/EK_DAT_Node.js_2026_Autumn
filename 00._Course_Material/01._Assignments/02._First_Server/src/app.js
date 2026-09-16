@@ -46,28 +46,42 @@ app.post('/animals' , (req, res) => {
     }
 
     const newAnimal = { name: name, id: Math.max(...animals.map(animal => animal.id)) + 1 };
-    const found = animals.find( (animal) => animal.name === `${name}` );
+    const foundAnimal = animals.find( (animal) => animal.name === `${name}` );
 
-    if(found === undefined) {
+    if(foundAnimal === undefined) {
         animals.push(newAnimal);
         res.send({ data: `${req.body}` });
-    } else if( found.name !== undefined ){
-        res.status(400).send({ data: `Animal by name ${found.name} already exist` });
+    } else if( foundAnimal.name !== undefined ){
+        res.status(400).send({ data: `Animal by name ${foundAnimal.name} already exist` });
     }
 
-})
+});
 
 app.put('/animals/:id' , (req, res) => {
-
-})
+    console.log("put")
+});
 
 app.patch('/animals/:id' , (req, res) => {
-    
-})
+    console.log("patch")
+
+});
 
 app.delete('/animals/:id' , (req, res) => {
+    const animalId = Number(req.params.id);
+    if(!animalId){
+        res.status(400).send({ data: `No valid id provided` });
+        return;
+    }
     
-})
+    const index = animals.map(animal => animal.id).indexOf(animalId);
+    if( index === -1 ){
+        res.status(404).send({ data: `No animal found for id: ${animalId}` });
+        return;
+    }
+
+    animals.splice(index, 1);
+    res.send({ data: `${req.params.id}`});
+});
 
 // 2xx OK
 // 3xx Redirect
