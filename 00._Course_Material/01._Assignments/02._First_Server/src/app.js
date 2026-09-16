@@ -45,7 +45,7 @@ app.post('/animals' , (req, res) => {
         return;
     }
 
-    const newAnimal = { name: name, id: animals[animals.length - 1].id + 1 };
+    const newAnimal = { name: name, id: Math.max(...animals.map(animal => animal.id)) + 1 };
     const found = animals.find( (animal) => animal.name === `${name}` );
 
     if(found === undefined) {
