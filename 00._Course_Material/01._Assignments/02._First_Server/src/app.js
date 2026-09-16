@@ -3,13 +3,13 @@ const app = express();
 
 app.use(express.json());
 
-const duck = { name:"Duck", id: 1 };
-const bird = { name:"Bird", id: 2 };
-const other_Animal = { name:"Other animal", id: 3 };
+const duck = { name: "Duck", id: 1 };
+const bird = { name: "Bird", id: 2 };
+const other_Animal = { name: "Other animal", id: 3 };
 
 
 
-const animals = [duck,bird,other_Animal]
+const animals = [ duck,bird,other_Animal ]
 
 app.get('/', (req, res) => {
     res.send({ data: "WOW Animals!" });
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.get('/animals', (req, res) => {
     
-    res.send({ data: animals});
+    res.send({ data: animals });
 });
 
 app.get('/animals/:id', (req, res) => {
@@ -33,7 +33,9 @@ app.get('/animals/:id', (req, res) => {
 });
 
 app.post('/animals' , (req, res) => {
-    console.log(req.body);
+    const newAnimal = { name: req.body.name, id: animals[animals.length - 1].id + 1 }
+    console.log(newAnimal);
+    animals.push(newAnimal);
     res.send({ data: `${req.body}` });
 })
 
