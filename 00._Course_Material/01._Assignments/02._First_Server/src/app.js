@@ -8,8 +8,9 @@ const bird = { name: "Bird", id: 2 };
 const other_Animal = { name: "Other animal", id: 3 };
 
 
-
 const animals = [ duck,bird,other_Animal ]
+
+let nextId = animals.length + 1;
 
 app.get('/', (req, res) => {
     res.send({ data: "WOW Animals!" });
@@ -24,7 +25,7 @@ app.get('/animals/:id', (req, res) => {
     const foundAnimal = animals.find((animal) => animal.id === provideId);
 
     if (!foundAnimal) {
-        res.status(404).send({ data: `No animal found by id ${provideId}` });
+        res.status(404).send({ errorMessage: `No animal found by id ${provideId}` });
     } else {
         res.send({ data: `${foundAnimal.name} WOW an animal. Try another animal` });
     }
@@ -35,24 +36,25 @@ app.post('/animals' , (req, res) => {
     const name = req.body.name;
 
     if(!name){
-        res.status(400).send({ data: `No name provided` });
+        res.status(400).send({ errorMessage: `No name provided` });
         return;
     }
 
     name.trim;
     if(!name){
-        res.status(400).send({ data: `No name provided` });
+        res.status(400).send({ errorMessage: `No name provided` });
         return;
     }
 
-    const newAnimal = { name: name, id: Math.max(...animals.map(animal => animal.id)) + 1 };
+    const newAnimal = { name: name };
     const foundAnimal = animals.find( (animal) => animal.name === `${name}` );
 
     if(foundAnimal === undefined) {
+        newAnimal.id = nextId++;
         animals.push(newAnimal);
         res.send({ data: `${req.body}` });
     } else if( foundAnimal.name !== undefined ){
-        res.status(400).send({ data: `Animal by name ${foundAnimal.name} already exist` });
+        res.status(400).send({ errorMessage: `Animal by name ${foundAnimal.name} already exist` });
     }
 
 });
@@ -60,25 +62,25 @@ app.post('/animals' , (req, res) => {
 app.put('/animals/:id' , (req, res) => {
     const animalId = Number(req.params.id);
     if(!animalId){
-        res.status(400).send({ data: `No valid id provided` });
+        res.status(400).send({ errorMessage: `No valid id provided` });
         return;
     }
     
     const index = animals.map(animal => animal.id).indexOf(animalId);
     if( index === -1 ){
-        res.status(404).send({ data: `No animal found for id: ${animalId}` });
+        res.status(404).send({ errorMessage: `No animal found for id: ${animalId}` });
         return;
     }
     
     const name = req.body.name;
     if(!name){
-        res.status(400).send({ data: `No name provided` });
+        res.status(400).send({ errorMessage: `No name provided` });
         return;
     }
 
     name.trim;
     if(!name){
-        res.status(400).send({ data: `No name provided` });
+        res.status(400).send({ errorMessage: `No name provided` });
         return;
     }
 
@@ -89,7 +91,7 @@ app.put('/animals/:id' , (req, res) => {
         animals[index] = newAnimal;
         res.send({ data: `${req.body}` });
     } else if( foundAnimal.name !== undefined ){
-        res.status(400).send({ data: `Animal by name ${foundAnimal.name} already exist` });
+        res.status(400).send({ errorMessage: `Animal by name ${foundAnimal.name} already exist` });
     }
 
 });
@@ -97,25 +99,25 @@ app.put('/animals/:id' , (req, res) => {
 app.patch('/animals/:id' , (req, res) => {
         const animalId = Number(req.params.id);
     if(!animalId){
-        res.status(400).send({ data: `No valid id provided` });
+        res.status(400).send({ errorMessage: `No valid id provided` });
         return;
     }
     
     const index = animals.map(animal => animal.id).indexOf(animalId);
     if( index === -1 ){
-        res.status(404).send({ data: `No animal found for id: ${animalId}` });
+        res.status(404).send({ errorMessage: `No animal found for id: ${animalId}` });
         return;
     }
     
     const name = req.body.name;
     if(!name){
-        res.status(400).send({ data: `No name provided` });
+        res.status(400).send({ daerrorMessageta: `No name provided` });
         return;
     }
 
     name.trim;
     if(!name){
-        res.status(400).send({ data: `No name provided` });
+        res.status(400).send({ errorMessage: `No name provided` });
         return;
     }
 
@@ -125,7 +127,7 @@ app.patch('/animals/:id' , (req, res) => {
         animals[index].name = name;
         res.send({ data: `${req.body}` });
     } else if( foundAnimal.name !== undefined ){
-        res.status(400).send({ data: `Animal by name ${foundAnimal.name} already exist` });
+        res.status(400).send({ errorMessage: `Animal by name ${foundAnimal.name} already exist` });
     }
 
 });
@@ -133,13 +135,13 @@ app.patch('/animals/:id' , (req, res) => {
 app.delete('/animals/:id' , (req, res) => {
     const animalId = Number(req.params.id);
     if(!animalId){
-        res.status(400).send({ data: `No valid id provided` });
+        res.status(400).send({ errorMessage: `No valid id provided` });
         return;
     }
 
-    const index = animals.map(animal => animal.id).indexOf(animalId);
+    const index = animals.findIndex((animal) => animal.id === animalId);
     if( index === -1 ){
-        res.status(404).send({ data: `No animal found for id: ${animalId}` });
+        res.status(404).send({ errorMessage: `No animal found for id: ${animalId}` });
         return;
     }
 
