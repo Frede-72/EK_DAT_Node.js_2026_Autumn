@@ -84,10 +84,11 @@ app.put('/animals/:id' , (req, res) => {
         return;
     }
 
-    const newAnimal = { name: name, id: Math.max(...animals.map(animal => animal.id)) + 1 };
+    const newAnimal = { name: name };
     const foundAnimal = animals.find( (animal) => animal.name === `${name}` );
 
     if(foundAnimal === undefined) {
+        newAnimal.id = nextId++;
         animals[index] = newAnimal;
         res.send({ data: `${req.body}` });
     } else if( foundAnimal.name !== undefined ){
@@ -103,7 +104,7 @@ app.patch('/animals/:id' , (req, res) => {
         return;
     }
     
-    const index = animals.map(animal => animal.id).indexOf(animalId);
+    const index = animals.findIndex((animal) => animal.id === animalId);
     if( index === -1 ){
         res.status(404).send({ errorMessage: `No animal found for id: ${animalId}` });
         return;
