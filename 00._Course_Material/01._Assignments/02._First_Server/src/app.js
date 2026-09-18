@@ -1,3 +1,4 @@
+const e = require('express');
 const express = require('express');
 const app = express();
 
@@ -155,4 +156,12 @@ app.delete('/animals/:id' , (req, res) => {
 // 4xx Client-side error
 // 5xx Server-side error
 
-app.listen(8080);
+app.listen(8080, (error) => {
+    if(error){
+        console.log("Error running the server", error);
+        return;
+    }
+    console.log("Server is running on port:", 8080);
+});
+
+console.log("This line");
