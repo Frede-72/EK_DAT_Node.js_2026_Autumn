@@ -1,2 +1,2 @@
-import fruitProcessingPlant from "./fruitOrchard.js";
-console.log(fruitProcessingPlant());
+import farm from "./fruitOrchard.js";
+console.log(farm.fruitProcessingPlant());
