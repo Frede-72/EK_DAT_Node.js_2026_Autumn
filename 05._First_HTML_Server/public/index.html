@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <style>
+/* 2. CSS in style tag */
+        h1 {
+            color: blueviolet;
+        }
+    </style>
+    <title>Torture Methods</title>
+</head>
+<!-- 1. inline-CSS -->
+<body style="background-color: rgb(223, 223, 223);">
+    <h1>Hi</h1>
+
+    <h3 id="under-construction-headline"> Website under construction...</h3>
+
+    <div>
+        <h4>Counter</h4>
+        <h3 id="counter"></h3>
+
+    </div>
+    <script src="frontpage.js"></script>
+    <script>
+        fetch("/api/counter")
+        .then((response) => response.json())
+        .then((result) => {
+            const counterH3 = document.getElementById("counter");
+            counterH3.textContent = result.data;
+            console.log(result);
+        });
+        
+    </script>
+</body>
+</html>
