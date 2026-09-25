@@ -1,11 +1,13 @@
-const express = require("express");
+import express from "express";
 const app = express();
 
 app.use(express.static("public"));
 
-const fruitPackage = require("./util/fruitUtils.js");
-console.log(fruitPackage.fruits, fruitPackage.slogan);
+// import fruitPackage from "./util/fruitUtilsESModule.js";
+// console.log(fruitPackage.fruits, fruitPackage.slogan);
+import fruit from "./util/fruitUtilsESModule.js";
 
+console.log(fruit.fruits, fruit.slogan);
 
 app.get("/" , (req, res) => {
     res.sendFile(__dirname + "/public/frontpage/index.html");
