@@ -8,7 +8,7 @@ console.log(fruitPackage.fruits, fruitPackage.slogan);
 
 
 app.get("/" , (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/public/frontpage/index.html");
 });
 
 let counter = 0;
