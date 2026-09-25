@@ -1,3 +1,3 @@
-function fruitProcessingPlant() {
+export default function fruitProcessingPlant() {
     return ["🥝","🍓","🥭","🍈"];
 }
