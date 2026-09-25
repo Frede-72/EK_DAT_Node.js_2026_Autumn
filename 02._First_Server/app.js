@@ -43,6 +43,13 @@ app.get('/bars/forgottenItems', (req, res) => {
     res.send({ data: req.query });
 });
 
+app.get("/proxy" , (req, res) => {
+// fetch google.com
+    fetch("https://www.google.com/")
+    .then((response) => response.text())
+    .then((result) => res.send(result))
+});
+
 app.post('/dictators' , (req, res) => {
     console.log(req.body);
     res.send({ data: req.body });
