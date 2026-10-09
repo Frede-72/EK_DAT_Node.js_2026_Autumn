@@ -1,0 +1,27 @@
+#logo {
+    width: 8vw;
+    min-width: 2rem;
+    height: auto;
+}
+
+/* nav {
+    height: 15vh;
+}
+
+main {
+    min-height: calc(100vh - 26vh);
+}
+
+footer {
+    height: 5vh;
+} */
+
+body {
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
