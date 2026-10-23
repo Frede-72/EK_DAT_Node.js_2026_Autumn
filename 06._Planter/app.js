@@ -3,15 +3,11 @@ const app = express();
 
 app.use(express.static("public"));
 
-import path from "path";
+import pagesRouter from "./routers/pagesRouter.js";
+import plantsRouter from "./routers/plantsRouter.js";
 
-app.get("/" , (req, res) => {
-    res.sendFile(path.resolve("public/frontpage/index.html"));
-});
+app.use(pagesRouter, plantsRouter);
 
-app.get("/about" , (req, res) => {
-    res.sendFile(path.resolve("public/about/about.html"))
-})
 
 // short-circuit operator || all falsy
 // nullish coalesscence ?? for null/undefined

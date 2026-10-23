@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 // functions as first-class citizens = can do with functions what can be done with other data types
 
 
+
      //endpoint //callback function
 app.get('/e', (req, res) => {
     res.send({ data: "talk" });
@@ -20,6 +21,9 @@ app.get('/e', (req, res) => {
 });
 // this = route
 
+app.get("/chatterroom" , (req,res) => {
+    res.redirect("/e");
+})
 
 // How can i send data in a GET request
 // Path variable /users/1
@@ -28,7 +32,7 @@ app.get('/e', (req, res) => {
 // create a /beers route
 
 app.get('/beers/:beerType/:amount', (req, res) => {
-
+ 
     console.log(req.params.beerType);
     res.send({ data: `you ordered ${req.params.amount} of ${req.params.beerType}` });
 });
