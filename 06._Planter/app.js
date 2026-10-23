@@ -3,10 +3,13 @@ const app = express();
 
 app.use(express.static("public"));
 
+app.use(express.urlencoded());
+
 import pagesRouter from "./routers/pagesRouter.js";
 import plantsRouter from "./routers/plantsRouter.js";
+import contactRouter from "./routers/contactRouter.js";
 
-app.use(pagesRouter, plantsRouter);
+app.use(pagesRouter, plantsRouter, contactRouter);
 
 
 // short-circuit operator || all falsy
