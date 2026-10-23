@@ -23,9 +23,18 @@ async function addPlant(){
     const result = await response.json();
     const plant = result.data;
 
+    if(!plant) {
+        console.log("No plant found. Please select a plant");
+        return;
+    }
+    const imageURL = "https://www.plantsolve.com/" + sanitizeXSS(plant.featuredImage);
+
+    console.log(plant);
+
     const plantsDiv = document.createElement("div");
     plantsDiv.innerHTML = `
-        <h3>Plant</h3>
+        <h3>${sanitizeXSS(plantSlug)}</h3>
+        <img class="plant-image" src=${imageURL}>
     `;
     plantsSection.appendChild(plantsDiv);
 
