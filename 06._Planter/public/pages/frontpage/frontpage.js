@@ -28,13 +28,14 @@ async function addPlant(){
         return;
     }
     const imageURL = "https://www.plantsolve.com/" + sanitizeXSS(plant.featuredImage);
-
     console.log(plant);
 
     const plantsDiv = document.createElement("div");
     plantsDiv.innerHTML = `
-        <h3>${sanitizeXSS(plantSlug)}</h3>
-        <img class="plant-image" src=${imageURL}>
+        <h2>${sanitizeXSS(plantSlug)}</h2>
+        <h4>${sanitizeXSS(plant.care?.watering)}<h4/>
+        <img class="plant-image" src=${imageURL} alt="plant image ${sanitizeXSS(plantSlug)}">
+        <p>${sanitizeXSS(plant.quickAnswer)}<p/>
     `;
     plantsSection.appendChild(plantsDiv);
 
