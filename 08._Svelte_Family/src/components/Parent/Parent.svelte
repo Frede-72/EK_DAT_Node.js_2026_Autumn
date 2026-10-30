@@ -8,7 +8,9 @@
     }
 
     let cookieJar = 10;
-    function handleEatCookie(name = "") {
+    const cookieJarArray = $state(["🍪","🍪","🍪","🍪","🍪"]);
+
+    function handleEatCookiev1(name = "") {
         if(cookieJar > 0){
         console.log(`${name} ate a cookie`);
         cookieJar -= 1;
@@ -18,15 +20,19 @@
         }
     }
 
-    function replenishCookies () {
-        cookieJar += 10;
-        console.log(`${name} bought 10 cookies`);
+    function handleEatCookie() {
+        cookieJarArray.pop();
     }
-    
+
+    function replenishCookies () {
+        cookieJarArray.push("🍪");
+    }
+
 </script>
 
 <h1>Hi i am {name}</h1>
-<button onclick={replenishCookies}>replenish Cookies</button>
+<p>{cookieJarArray}</p>
+<button onclick={replenishCookies}>Replenish Cookies</button>
 
 {#each children as child (child.id)}
     <Child {...child} onShowLove={handleShowLove} onEatCookie={handleEatCookie}/>

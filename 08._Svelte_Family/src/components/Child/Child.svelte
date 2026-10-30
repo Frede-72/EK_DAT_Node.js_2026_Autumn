@@ -11,7 +11,7 @@
     <h2>I am {name}</h2>
 
     <button onclick={() => onShowLove(name)}>Show Love</button>
-    <button onclick={() => onEatCookie(name)}>Eat cookie</button>
+    <button onclick={onEatCookie}>Eat cookie</button>
 </div>
 
 <style>
