@@ -1,5 +1,21 @@
 <script>
-    const { name, familySheep, isGirl, onShowLove, onEatCookie } = $props();
+    let { name, familySheep, isGirl, onShowLove, onEatCookie, cookieCount = $bindable() } = $props();
+
+    import { fridgeMessages } from "../../stores/fridgeMessagesStore.js";
+
+    let fridgeMessageInput = $state("");
+
+    function writeFridgeMessage() {
+        // fridgeMessages.set([...$fridgeMessages, { name, message: fridgeMessageInput }]);
+
+        fridgeMessages.update((fridgeMessagesStoreValue) => {
+            fridgeMessagesStoreValue.push({ name, message: fridgeMessageInput });
+            return fridgeMessagesStoreValue;
+        });
+
+        fridgeMessageInput = "";
+    }
+
 
 </script>
 
@@ -12,6 +28,9 @@
 
     <button onclick={() => onShowLove(name)}>Show Love</button>
     <button onclick={onEatCookie}>Eat cookie</button>
+
+    <input bind:value={fridgeMessageInput} type="text" placeholder="Write a fridge message">
+    <button onclick={writeFridgeMessage}>Write Fridge Message</button>
 </div>
 
 <style>

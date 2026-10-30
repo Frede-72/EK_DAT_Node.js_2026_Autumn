@@ -1,39 +1,39 @@
 <script>
-  import Child from "../Child/Child.svelte";
+    import Child from "../Child/Child.svelte";
+
+    import { fridgeMessages } from "../../stores/fridgeMessagesStore.js";
 
     const { name, children } = $props();
+
+    function wipeFridge() {
+        fridgeMessages.set([{ name, message: "Write your message below" }]);
+    }
 
     function handleShowLove(name = "") {
         console.log(`${name}, loves me.`);
     }
 
-    let cookieJar = 10;
-    const cookieJarArray = $state(["🍪","🍪","🍪","🍪","🍪"]);
-
-    function handleEatCookiev1(name = "") {
-        if(cookieJar > 0){
-        console.log(`${name} ate a cookie`);
-        cookieJar -= 1;
-        console.log(`${cookieJar} cookies left`);
-        } else {
-            console.log("No more cookies");
-        }
-    }
+    const cookieJar = $state(["🍪","🍪","🍪","🍪","🍪"]);
 
     function handleEatCookie() {
-        cookieJarArray.pop();
+        cookieJar.pop();
     }
 
     function replenishCookies () {
-        cookieJarArray.push("🍪");
+        cookieJar.push("🍪");
     }
+
+
 
 </script>
 
 <h1>Hi i am {name}</h1>
-<p>{cookieJarArray}</p>
+ 
+<button onclick={wipeFridge}>Wipe fridge</button>
+
+<p>{cookieJar}</p>
 <button onclick={replenishCookies}>Replenish Cookies</button>
 
 {#each children as child (child.id)}
-    <Child {...child} onShowLove={handleShowLove} onEatCookie={handleEatCookie}/>
+    <Child {...child} onShowLove={handleShowLove} onEatCookie={handleEatCookie} bind:cookieCount={cookieJar.length}/>
 {/each}
