@@ -11,7 +11,7 @@ app.use(helmet());
 import session from "express-session";
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: false,
   cookie: { secure: false }
