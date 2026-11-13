@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import express from 'express';
 
 const app = express();
@@ -11,7 +13,7 @@ import session from "express-session";
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { secure: false }
 }))
 
@@ -55,7 +57,7 @@ app.get("/{*splat}", (req, res) => {
 });
 
 app.all("/{*splat}", (req, res) => {
-    res.status(404).send({ data: "Route does not exist" });
+res.status(404).send({ data: "Route does not exist" });
 });
 
 const PORT = process.env.PORT ?? 8080;
