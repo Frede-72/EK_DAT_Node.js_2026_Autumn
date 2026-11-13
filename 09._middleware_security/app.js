@@ -6,6 +6,16 @@ import helmet from "helmet";
 app.use(helmet());
 
 
+import session from "express-session";
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
+
+
 import { rateLimit } from 'express-rate-limit'
 
 const limiter = rateLimit({
@@ -33,7 +43,8 @@ app.use("/auth", authenticationLimiter);
 
 import middlewareRouterrouter from './routers/middlewareRouter.js';
 import authRouter from "./routers/authRouter.js";
-app.use(middlewareRouterrouter, authRouter);
+import sessionRouter from "./routers/sessionRouter.js";
+app.use(middlewareRouterrouter, authRouter, sessionRouter);
 
 
 app.get("/{*splat}", (req, res) => {
